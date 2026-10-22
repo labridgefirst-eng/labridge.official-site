@@ -75,4 +75,974 @@
         .hero-ocean-bg {
             background: radial-gradient(circle at 80% 35%, rgba(251, 191, 36, 0.14) 0%, transparent 35%),
                         radial-gradient(circle at 30% 60%, rgba(109, 40, 217, 0.22) 0%, transparent 45%),
-                        linear-gradient(180deg, #050814
+                        linear-gradient(180deg, #050814 0%, #0A1128 55%, #0F1E3E 78%, #070C1B 100%);
+        }
+
+        @keyframes beamSweep {
+            0%, 100% { transform: rotate(-5deg) scaleY(1); opacity: 0.55; }
+            50% { transform: rotate(3deg) scaleY(1.15); opacity: 0.85; }
+        }
+        .lighthouse-beam {
+            transform-origin: 88% 58%;
+            animation: beamSweep 8s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        .star-twinkle {
+            animation: twinkle 4s ease-in-out infinite;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #060A17;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1E293B;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="selection:bg-purple-600 selection:text-white">
+
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#060A17]/85 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-[#090E24] border border-white/15 flex items-center justify-center shadow-lg shadow-purple-950/50 group-hover:border-amber-400/50 transition">
+                    <svg viewBox="0 0 120 90" class="w-9 h-9">
+                        <defs>
+                            <linearGradient id="lrBridgeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#5B34EA" />
+                                <stop offset="40%" stop-color="#A855F7" />
+                                <stop offset="75%" stop-color="#F59E0B" />
+                                <stop offset="100%" stop-color="#FBBF24" />
+                            </linearGradient>
+                            <filter id="glowEffect" x="-20%" y="-20%" width="140%" height="140%">
+                                <feGaussianBlur stdDeviation="2.5" result="blur" />
+                                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                            </filter>
+                        </defs>
+                        <path d="M26 68 C 36 22, 84 22, 94 68" stroke="url(#lrBridgeGrad)" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+                        <line x1="40" y1="45" x2="40" y2="68" stroke="url(#lrBridgeGrad)" stroke-width="1.8" opacity="0.8"/>
+                        <line x1="50" y1="36" x2="50" y2="68" stroke="url(#lrBridgeGrad)" stroke-width="1.8" opacity="0.8"/>
+                        <line x1="60" y1="33" x2="60" y2="68" stroke="url(#lrBridgeGrad)" stroke-width="1.8" opacity="0.8"/>
+                        <line x1="70" y1="36" x2="70" y2="68" stroke="url(#lrBridgeGrad)" stroke-width="1.8" opacity="0.8"/>
+                        <line x1="80" y1="45" x2="80" y2="68" stroke="url(#lrBridgeGrad)" stroke-width="1.8" opacity="0.8"/>
+                        <path d="M12 24 H28 M16 24 V70 H36 L39 60" stroke="#7C3AED" stroke-width="6.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M86 24 H102 C110 24 110 45 100 47 L113 70 M91 24 V70 M86 70 H96" stroke="#F59E0B" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="60" cy="31" r="3" fill="#FFFBEB" filter="url(#glowEffect)"/>
+                        <path d="M60 18 L60 44 M48 31 L72 31" stroke="#FDE68A" stroke-width="1.2" opacity="0.9"/>
+                    </svg>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-serif text-xl sm:text-2xl font-bold tracking-wider text-logo-gradient">LabRidge</span>
+                    <span class="text-[10px] text-slate-400 tracking-widest -mt-1">あなたの挫折をゼロにする、体験型リスキリング・プラットフォーム</span>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
+                <a href="#concept" class="hover:text-amber-300 transition">コンセプト</a>
+                <a href="#diagnosis" class="hover:text-amber-300 transition">適性診断</a>
+                <a href="#interactive-tools" class="hover:text-amber-300 transition">Web特典ツール</a>
+                <a href="#labridge-tv" class="hover:text-amber-300 transition">LabRidge TV</a>
+                <a href="#discord-tour" class="hover:text-amber-300 transition">サーバー内覧</a>
+            </nav>
+
+            <div class="flex items-center gap-2 sm:gap-3">
+                <button onclick="copyInviteUrl()" class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-medium text-slate-300 bg-white/5 hover:bg-white/10 border border-white/15 transition" title="招待URLをコピー">
+                    <i class="fa-regular fa-copy text-amber-400"></i>
+                    <span>招待URLコピー</span>
+                </button>
+                <a href="https://discord.gg/kcMQ2eF5T" target="_blank" rel="noopener noreferrer" class="px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold text-white border border-purple-400/50 bg-purple-950/60 hover:bg-purple-900/80 hover:border-amber-400 transition shadow-lg shadow-purple-900/30 flex items-center gap-2">
+                    <i class="fa-brands fa-discord text-amber-300"></i>
+                    <span>無料登録</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative min-h-screen pt-24 pb-16 md:pt-32 md:pb-24 flex items-center hero-ocean-bg overflow-hidden">
+        <div class="absolute inset-0 pointer-events-none z-0">
+            <svg class="w-full h-full" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+                <defs>
+                    <linearGradient id="heroBridgeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#4F46E5" />
+                        <stop offset="35%" stop-color="#9333EA" />
+                        <stop offset="70%" stop-color="#D97706" />
+                        <stop offset="100%" stop-color="#FBBF24" />
+                    </linearGradient>
+                    <linearGradient id="beamGrad" x1="100%" y1="50%" x2="0%" y2="0%">
+                        <stop offset="0%" stop-color="#FEF08A" stop-opacity="0.55" />
+                        <stop offset="40%" stop-color="#F59E0B" stop-opacity="0.18" />
+                        <stop offset="100%" stop-color="#7C3AED" stop-opacity="0" />
+                    </linearGradient>
+                    <radialGradient id="underwaterGlow" cx="72%" cy="80%" r="35%">
+                        <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.28" />
+                        <stop offset="50%" stop-color="#6366F1" stop-opacity="0.12" />
+                        <stop offset="100%" stop-color="#050814" stop-opacity="0" />
+                    </radialGradient>
+                </defs>
+
+                <g fill="#FFF">
+                    <circle cx="150" cy="120" r="1.5" class="star-twinkle" style="animation-delay: 0.2s"/>
+                    <circle cx="520" cy="160" r="2" class="star-twinkle" style="animation-delay: 1.5s"/>
+                    <circle cx="960" cy="140" r="1.8" class="star-twinkle" style="animation-delay: 2.3s"/>
+                    <circle cx="1340" cy="180" r="2" class="star-twinkle" style="animation-delay: 0.8s"/>
+                </g>
+
+                <path d="M0 480 Q 180 430 350 470 T 750 460 T 1200 470 T 1440 450 L 1440 560 L 0 560 Z" fill="#0B132B" opacity="0.6"/>
+                <polygon points="1275,410 350,150 350,530" fill="url(#beamGrad)" class="lighthouse-beam" />
+                <path d="M1140 545 Q 1230 495 1350 515 L 1440 535 L 1440 550 L 1140 550 Z" fill="#111936"/>
+                <path d="M1262 512 L1267 425 L1285 425 L1290 512 Z" fill="#E2E8F0"/>
+                <rect x="1264" y="405" width="24" height="20" rx="2" fill="#FEF08A" />
+
+                <g transform="translate(820, 365) scale(1.25)">
+                    <path d="M35 140 C 65 45, 195 45, 225 140" stroke="url(#heroBridgeGrad)" stroke-width="7" fill="none" stroke-linecap="round"/>
+                    <line x1="70" y1="95" x2="70" y2="140" stroke="url(#heroBridgeGrad)" stroke-width="2" opacity="0.75"/>
+                    <line x1="95" y1="76" x2="95" y2="140" stroke="url(#heroBridgeGrad)" stroke-width="2" opacity="0.75"/>
+                    <line x1="120" y1="68" x2="120" y2="140" stroke="url(#heroBridgeGrad)" stroke-width="2" opacity="0.75"/>
+                    <path d="M12 52 H40 M23 52 V142 H62 L68 122" stroke="#7C3AED" stroke-width="11" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M210 52 H242 C262 52 262 92 238 97 L268 142 M222 52 V142 M210 142 H234" stroke="#F59E0B" stroke-width="11" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+
+                <rect x="0" y="542" width="1440" height="358" fill="#071126"/>
+                <ellipse cx="1050" cy="680" rx="450" ry="180" fill="url(#underwaterGlow)"/>
+                <line x1="0" y1="542" x2="1440" y2="542" stroke="#4F46E5" stroke-width="1.5" opacity="0.5"/>
+            </svg>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="max-w-3xl">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/15 backdrop-blur-md mb-6">
+                    <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                    <span class="text-xs sm:text-sm font-medium text-amber-200 tracking-wide">初期コアメンバー（Founder枠）無料招待中</span>
+                </div>
+
+                <h1 class="font-serif text-[clamp(1.3rem,5.4vw,3.5rem)] font-bold leading-[1.35] tracking-tight text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.8)] mb-6">
+                    <span class="block whitespace-nowrap">『魚に木登りを教えても、</span>
+                    <span class="block whitespace-nowrap pl-3 sm:pl-6">才能がないと嘆くだけ。』</span>
+                </h1>
+
+                <p class="text-base sm:text-lg lg:text-xl text-slate-200/95 leading-relaxed font-normal mb-9 drop-shadow">
+                    あなたはダメじゃない。まだ、自分に合う海を見つけていないだけ。<br class="hidden sm:inline">
+                    無理な競争から離れて、自分の適性をノーリスクで試す<br class="hidden sm:inline">
+                    匿名の秘密基地、<span class="text-amber-300 font-semibold">LabRidge（ラボリッジ）</span>。
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+                    <a href="https://discord.gg/kcMQ2eF5T" target="_blank" rel="noopener noreferrer" class="bg-cta-gradient text-slate-950 font-black text-base sm:text-lg px-8 py-4 rounded-full shadow-xl flex items-center justify-center gap-3 group">
+                        <i class="fa-brands fa-discord text-xl text-slate-950 group-hover:scale-110 transition"></i>
+                        <span>Discordで無料で参加する</span>
+                    </a>
+                    <a href="#diagnosis" class="px-7 py-4 rounded-full bg-slate-900/80 hover:bg-slate-800/90 text-slate-200 font-semibold text-sm sm:text-base border border-white/15 flex items-center justify-center gap-2 transition backdrop-blur-md">
+                        <i class="fa-solid fa-compass text-amber-400"></i>
+                        <span>自分の「海（適性）」を30秒診断</span>
+                    </a>
+                </div>
+
+                <div class="mt-4 inline-flex flex-wrap items-center gap-2 px-4 py-2 rounded-xl bg-slate-950/70 border border-white/10 text-xs text-slate-300">
+                    <span class="text-amber-400 font-bold"><i class="fa-solid fa-link mr-1"></i>公式招待リンク:</span>
+                    <span class="font-mono text-indigo-300">https://discord.gg/kcMQ2eF5T</span>
+                    <button onclick="copyInviteUrl()" class="ml-1 px-2 py-0.5 rounded bg-white/10 hover:bg-white/20 text-[11px] text-white transition">
+                        <i class="fa-regular fa-copy mr-1"></i>コピー
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="concept" class="py-20 sm:py-28 bg-[#070C1B] relative border-t border-white/5">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-bold tracking-widest uppercase text-amber-400">CONCEPT & PHILOSOPHY</span>
+                <h2 class="font-serif text-2xl sm:text-4xl font-bold mt-3 leading-snug">
+                    なぜ、真面目に頑張っている人ほど<br>「自分はダメだ」と傷ついてしまうのか？
+                </h2>
+                <p class="text-slate-400 mt-4 text-sm sm:text-base leading-relaxed">
+                    今の社会やSNSは「すでに自分の武器を見つけた上位20%の人」がさらに輝くための場所ばかりです。<br class="hidden sm:inline">
+                    LabRidgeは、残りの80%の「今の環境がしっくりこない人」が安心して実験できるサードプレイスです。
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 sm:gap-8">
+                <div class="p-7 rounded-2xl border-brand-gradient bg-[#0B132B]/90 relative overflow-hidden group">
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 text-xl mb-5">
+                        <i class="fa-solid fa-heart-crack"></i>
+                    </div>
+                    <div class="text-xs font-bold text-purple-400 mb-1">STEP 01｜ゼロリセット</div>
+                    <h3 class="text-lg sm:text-xl font-bold text-white mb-3">「木登り競争」から降りて、否定されない居場所へ</h3>
+                    <p class="text-sm text-slate-300 leading-relaxed">
+                        「今の会社や学校が合わない」という弱音を吐いても、ここでは誰も「甘えだ」と否定しません。まずはすり減った自己肯定感をゼロに戻します。
+                    </p>
+                </div>
+
+                <div class="p-7 rounded-2xl border-brand-gradient bg-[#0B132B]/90 relative overflow-hidden group">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 text-xl mb-5">
+                        <i class="fa-solid fa-flask-vial"></i>
+                    </div>
+                    <div class="text-xs font-bold text-amber-400 mb-1">STEP 02｜ノーリスク実験</div>
+                    <h3 class="text-lg sm:text-xl font-bold text-white mb-3">いきなり高額スクールに行かず「つまみ食い」で試す</h3>
+                    <p class="text-sm text-slate-300 leading-relaxed">
+                        何十万円も払う前に、「ch1 宅建」、「ch2 簿記」、「ch3 スキル」の部屋を覗き見して、自分の心が動くか実験できます。
+                    </p>
+                </div>
+
+                <div class="p-7 rounded-2xl border-brand-gradient bg-[#0B132B]/90 relative overflow-hidden group">
+                    <div class="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-400 text-xl mb-5">
+                        <i class="fa-solid fa-water"></i>
+                    </div>
+                    <div class="text-xs font-bold text-sky-400 mb-1">STEP 03｜自分の海へ泳ぎ出す</div>
+                    <h3 class="text-lg sm:text-xl font-bold text-white mb-3">小さな前進を褒め合い、一生モノの適性と武器を掴む</h3>
+                    <p class="text-sm text-slate-300 leading-relaxed">
+                        「今日テキストを5ページ読んだ！」そんな小さな一歩を仲間と肯定し合いながら、あなただけの「泳ぎやすい海」へとキャリアを繋げます。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="diagnosis" class="py-20 sm:py-28 bg-gradient-to-b from-[#070C1B] via-[#0E1738] to-[#070C1B] relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="inline-block px-3 py-1 rounded-full bg-amber-500/15 border border-amber-400/30 text-amber-300 text-xs font-bold mb-3">
+                    <i class="fa-solid fa-sparkles mr-1"></i> 入会特典「適性診断Webツール」
+                </span>
+                <h2 class="font-serif text-2xl sm:text-4xl font-bold">
+                    30秒でわかる！あなたの「海（適性）」＆モヤモヤ診断
+                </h2>
+                <p class="text-slate-300 mt-3 text-sm sm:text-base">
+                    4つの質問に答えるだけで、今の環境が苦しい理由と、LabRidgeで最初に覗くべき「実験部屋」を診断します。
+                </p>
+            </div>
+
+            <div class="rounded-3xl border-brand-gradient bg-[#0A1124]/95 p-6 sm:p-10 shadow-2xl">
+                <div id="quiz-progress-wrap" class="mb-8">
+                    <div class="flex justify-between text-xs font-semibold text-slate-400 mb-2">
+                        <span id="quiz-step-label">QUESTION 1 / 4</span>
+                        <span id="quiz-percent-label">25%</span>
+                    </div>
+                    <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+                        <div id="quiz-progress-bar" class="h-full bg-brand-gradient transition-all duration-300" style="width: 25%"></div>
+                    </div>
+                </div>
+
+                <div id="quiz-content"></div>
+
+                <div id="quiz-result" class="hidden space-y-6">
+                    <div class="p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-purple-950/70 via-indigo-950/70 to-amber-950/50 border border-amber-400/40">
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                            <span class="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-amber-400 text-slate-950">診断結果レポート</span>
+                            <span class="text-xs text-slate-300" id="result-type-badge">タイプ分析完了</span>
+                        </div>
+                        <h3 id="result-title" class="font-serif text-xl sm:text-2xl font-bold text-white mb-2"></h3>
+                        <p id="result-desc" class="text-sm sm:text-base text-slate-200 leading-relaxed"></p>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div class="p-5 rounded-2xl bg-slate-900/90 border border-white/10">
+                            <div class="text-xs text-amber-400 font-bold mb-1">🌊 あなたにおすすめの実験チャンネル</div>
+                            <div id="result-channel" class="text-lg font-bold text-white mb-2"></div>
+                            <p id="result-channel-reason" class="text-xs text-slate-300 leading-relaxed"></p>
+                        </div>
+                        <div class="p-5 rounded-2xl bg-slate-900/90 border border-white/10">
+                            <div class="text-xs text-purple-400 font-bold mb-1">📊 無理なく続く学習シミュレーション目安</div>
+                            <div id="result-sim-plan" class="text-lg font-bold text-white mb-2"></div>
+                            <p id="result-sim-detail" class="text-xs text-slate-300 leading-relaxed"></p>
+                        </div>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-[#111C38] border border-indigo-400/30 flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <div class="space-y-1 text-center sm:text-left">
+                            <div class="text-xs font-bold text-emerald-400 flex items-center justify-center sm:justify-start gap-1.5">
+                                <i class="fa-solid fa-check-double"></i>
+                                <span>診断結果をコピーしてDiscordの『#自己紹介』にそのまま貼れます！</span>
+                            </div>
+                            <div class="text-sm sm:text-base font-bold text-white">
+                                さらに詳細な『自己理解ワーク＆逆算ツール』をサーバー内で無料体験
+                            </div>
+                        </div>
+                        <div class="flex flex-col sm:flex-row gap-2.5 shrink-0 w-full sm:w-auto">
+                            <button onclick="copyDiagnosisSummary()" class="px-4 py-3.5 rounded-xl bg-indigo-600/40 hover:bg-indigo-600/60 border border-indigo-400/40 text-xs font-bold text-white transition">
+                                <i class="fa-regular fa-copy mr-1"></i> 診断結果をコピー
+                            </button>
+                            <a href="https://discord.gg/kcMQ2eF5T" target="_blank" rel="noopener noreferrer" class="bg-cta-gradient text-slate-950 font-black text-xs sm:text-sm px-6 py-3.5 rounded-xl text-center shadow-lg flex items-center justify-center gap-1.5">
+                                <i class="fa-brands fa-discord"></i>
+                                <span>Discordへ参加</span>
+                            </a>
+                            <button onclick="resetQuiz()" class="px-3 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs text-slate-300 font-medium transition">
+                                やり直す
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="interactive-tools" class="py-20 sm:py-28 bg-[#080E22] border-t border-white/5">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="text-xs font-bold tracking-widest uppercase text-purple-400">INTERACTIVE MEMBER TOOLS</span>
+                <h2 class="font-serif text-2xl sm:text-4xl font-bold mt-2">
+                    サイト上でそのまま使える！WEB特典ツール
+                </h2>
+                <p class="text-slate-400 mt-3 text-sm sm:text-base">
+                    スマホやPCからそのまま操作して、モヤモヤを整理したり、資格取得までの月数をリアルタイムでシミュレーションできます。
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div class="p-7 sm:p-8 rounded-3xl bg-gradient-to-b from-[#101935] to-[#0A1022] border border-emerald-500/30 flex flex-col justify-between shadow-xl">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold">特典ツール①｜モヤモヤ分解ワーク</span>
+                            <i class="fa-solid fa-file-pen text-2xl text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">
+                            自己理解＆ストレス因子アナライザー
+                        </h3>
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6">
+                            いま何に消耗しているかを選ぶだけで、あなたの隠れた「適性の方向性」をその場で自動判定します。
+                        </p>
+
+                        <div class="space-y-4 bg-slate-900/90 p-5 rounded-2xl border border-white/10 mb-6">
+                            <div>
+                                <label class="block text-xs font-bold text-emerald-300 mb-1.5">1. いま最も消耗している原因は？</label>
+                                <select id="stress-cause" class="w-full bg-black/40 border border-white/15 rounded-xl p-2.5 text-xs text-white">
+                                    <option value="crowd">常に周囲の目が気になる・雑音がしんどい</option>
+                                    <option value="rule">評価基準が曖昧で何を頑張ればいいか分からない</option>
+                                    <option value="routine">毎日同じルーティンで成長実感が全くない</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-emerald-300 mb-1.5">2. 比較的心が軽くなる作業は？</label>
+                                <select id="preferred-task" class="w-full bg-black/40 border border-white/15 rounded-xl p-2.5 text-xs text-white">
+                                    <option value="silent">一人で黙々と文章を読む・調べること</option>
+                                    <option value="logic">数字やルールを整理してパズルのように解くこと</option>
+                                    <option value="creative">新しいツールや言語、デザインに触れること</option>
+                                </select>
+                            </div>
+                            <button onclick="runSelfAnalysis()" class="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-black text-xs transition shadow-md">
+                                分析結果を生成 🔍
+                            </button>
+                            <div id="self-analysis-result" class="hidden p-3.5 rounded-xl bg-emerald-950/80 border border-emerald-400/40 text-xs text-emerald-200 space-y-1"></div>
+                        </div>
+                    </div>
+
+                    <a href="https://discord.gg/kcMQ2eF5T" target="_blank" rel="noopener noreferrer" class="w-full py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs transition flex items-center justify-center gap-2 shadow-lg">
+                        <i class="fa-brands fa-discord"></i> Discordに参加して仲間と結果をシェアする
+                    </a>
+                </div>
+
+                <div class="p-7 sm:p-8 rounded-3xl bg-gradient-to-b from-[#101935] to-[#0A1022] border border-amber-500/30 flex flex-col justify-between shadow-xl">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-bold">特典ツール②｜学習逆算シミュレーター</span>
+                            <i class="fa-solid fa-calculator text-2xl text-amber-400"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">
+                            資格・スキル到達月数計算機
+                        </h3>
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6">
+                            1日あたりのスキマ学習時間をスライダーで動かすと、各種資格・スキルの合格目安がリアルタイムで算出されます。
+                        </p>
+
+                        <div class="space-y-4 bg-slate-900/90 p-5 rounded-2xl border border-white/10 mb-6">
+                            <div>
+                                <div class="flex justify-between text-xs font-bold text-amber-300 mb-1">
+                                    <span>1日の学習時間:</span>
+                                    <span id="hours-val" class="text-white font-mono text-sm">1.5 時間 / 日</span>
+                                </div>
+                                <input type="range" id="study-hours-slider" min="0.5" max="4" step="0.5" value="1.5" oninput="updateStudySim()" class="w-full accent-amber-400 cursor-pointer">
+                            </div>
+                            <div class="grid grid-cols-3 gap-2 text-center pt-2">
+                                <div class="p-3 rounded-xl bg-black/50 border border-white/10">
+                                    <div class="text-[10px] text-slate-400 font-bold">日商簿記3級</div>
+                                    <div id="sim-boki" class="text-base font-extrabold text-amber-300 mt-1">2.0ヶ月</div>
+                                    <div class="text-[9px] text-slate-500 mt-0.5">累計90h</div>
+                                </div>
+                                <div class="p-3 rounded-xl bg-black/50 border border-white/10">
+                                    <div class="text-[10px] text-slate-400 font-bold">宅建士合格</div>
+                                    <div id="sim-takken" class="text-base font-extrabold text-amber-300 mt-1">6.5ヶ月</div>
+                                    <div class="text-[9px] text-slate-500 mt-0.5">累計300h</div>
+                                </div>
+                                <div class="p-3 rounded-xl bg-black/50 border border-white/10">
+                                    <div class="text-[10px] text-slate-400 font-bold">IT基礎スキル</div>
+                                    <div id="sim-it" class="text-base font-extrabold text-amber-300 mt-1">3.3ヶ月</div>
+                                    <div class="text-[9px] text-slate-500 mt-0.5">累計150h</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://discord.gg/kcMQ2eF5T" target="_blank" rel="noopener noreferrer" class="w-full py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs transition flex items-center justify-center gap-2 shadow-lg">
+                        <i class="fa-brands fa-discord"></i> Discordの『ch1〜3』で進捗を記録する
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="labridge-tv" class="py-20 sm:py-28 bg-[#060A17] border-t border-white/5 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 text-xs font-bold mb-3 inline-block">
+                    <i class="fa-solid fa-tv mr-1"></i> 週末プログラム
+                </span>
+                <h2 class="font-serif text-2xl sm:text-4xl font-bold">
+                    LabRidge TV 週間番組表
+                </h2>
+                <p class="text-slate-400 mt-3 text-sm sm:text-base">
+                    顔出し不要・外部講師やAIによる「適性発見プログラム」。<br class="hidden sm:inline">
+                    高額スクールに通う前に、ここで「つまみ食い実験」ができます。
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="p-6 rounded-3xl bg-[#0B132B] border border-purple-500/30 flex flex-col justify-between shadow-xl">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs px-2.5 py-1 rounded-full bg-purple-500/20 text-purple-300 font-bold">毎週土曜 21:00</span>
+                            <i class="fa-solid fa-house-chimney text-purple-400"></i>
+                        </div>
+                        <h3 class="font-bold text-white text-lg mb-2">ch1｜宅建・不動産スクール特番</h3>
+                        <p class="text-xs text-slate-300 leading-relaxed mb-4">
+                            「法律やルールを覚えるのが得意かも？」国家資格の超わかりやすい導入授業＆過去問の解き方をライブ配信！
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs">
+                        <span class="text-slate-400">形式: 講師ライブ / 質問OK</span>
+                        <a href="https://discord.gg/kcMQ2eF5T" target="_blank" rel="noopener noreferrer" class="text-amber-400 font-bold hover:underline">参加する →</a>
+                    </div>
+                </div>
+
+                <div class="p-6 rounded-3xl bg-[#0B132B] border border-amber-500/30 flex flex-col justify-between shadow-xl">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs px-2.5 py-1 rounded-full bg-amber-500/20 text-amber-300 font-bold">毎週日曜 20:00</span>
+                            <i class="fa-solid fa-calculator text-amber-400"></i>
+                        </div>
+                        <h3 class="font-bold text-white text-lg mb-2">ch2｜簿記・お金の仕組み実験室</h3>
+                        <p class="text-xs text-slate-300 leading-relaxed mb-4">
+                            「数字やパズルが好きな人集まれ！」簿記3級の借方・貸方のロジックをゼロから楽しく紐解く特別番組。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs">
+                        <span class="text-slate-400">形式: 体験ワーク形式</span>
+                        <a href="https://discord.gg/kcMQ2eF5T" target="_blank" rel="noopener noreferrer" class="text-amber-400 font-bold hover:underline">参加する →</a>
+                    </div>
+                </div>
+
+                <div class="p-6 rounded-3xl bg-[#0B132B] border border-sky-500/30 flex flex-col justify-between shadow-xl">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs px-2.5 py-1 rounded-full bg-sky-500/20 text-sky-300 font-bold">平日不定期</span>
+                            <i class="fa-solid fa-laptop-code text-sky-400"></i>
+                        </div>
+                        <h3 class="font-bold text-white text-lg mb-2">ch3｜スキル・越境エクスプローラー</h3>
+                        <p class="text-xs text-slate-300 leading-relaxed mb-4">
+                            語学アプリ、ITツール、副業初歩など、場所を選ばないスキルに触れる実験ラボ。ROM参加も大歓迎！
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs">
+                        <span class="text-slate-400">形式: アーカイブ聴講可</span>
+                        <a href="https://discord.gg/kcMQ2eF5T" target="_blank" rel="noopener noreferrer" class="text-amber-400 font-bold hover:underline">参加する →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="discord-tour" class="py-20 sm:py-28 bg-[#070C1B] border-t border-white/5">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-xs font-bold tracking-widest uppercase text-indigo-400">DISCORD SERVER TOUR</span>
+                <h2 class="font-serif text-2xl sm:text-4xl font-bold mt-2">
+                    入る前に中身を覗き見！「LabRidge」サーバー内覧ツアー
+                </h2>
+                <p class="text-slate-400 mt-3 text-sm sm:text-base">
+                    左側のチャンネル名をクリックすると、実際の部屋でどんな会話やルールが流れているか体験できます。
+                </p>
+            </div>
+
+            <div class="rounded-3xl overflow-hidden border border-white/15 shadow-2xl grid md:grid-cols-12 bg-discordBg min-h-[540px]">
+                <div class="md:col-span-4 bg-discordSidebar p-4 flex flex-col justify-between border-b md:border-b-0 md:border-r border-black/30">
+                    <div>
+                        <div class="flex items-center justify-between px-3 py-2.5 mb-3 rounded-xl bg-discordDark/80 border border-white/5">
+                            <div class="flex items-center gap-2.5">
+                                <div class="w-7 h-7 rounded-lg bg-[#090E24] border border-amber-400/40 flex items-center justify-center text-xs font-serif font-bold text-amber-300">LR</div>
+                                <span class="font-bold text-white text-sm">Rabridge Plus</span>
+                            </div>
+                            <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-bold">安心ルール完備</span>
+                        </div>
+
+                        <div class="space-y-4 text-xs">
+                            <div>
+                                <div class="px-2 mb-1 text-[11px] font-bold text-discordMuted">【情報・インフォメーション】</div>
+                                <button id="ch-btn-rules" onclick="selectChannel('rules')" class="ch-nav-btn w-full text-left px-3 py-2 rounded-lg flex items-center gap-2 hover:bg-white/5 transition">
+                                    <span class="text-slate-400 font-bold">#</span>
+                                    <span class="truncate">はじめに-必読（規約やコンセプト）</span>
+                                </button>
+                                <button id="ch-btn-news" onclick="selectChannel('news')" class="ch-nav-btn w-full text-left px-3 py-2 rounded-lg flex items-center gap-2 hover:bg-white/5 transition">
+                                    <span class="text-slate-400 font-bold">#</span>
+                                    <span class="truncate">お知らせ（運営からのアナウンス）</span>
+                                </button>
+                            </div>
+
+                            <div>
+                                <div class="px-2 mb-1 text-[11px] font-bold text-discordMuted">【メイン広場】</div>
+                                <button id="ch-btn-intro" onclick="selectChannel('intro')" class="ch-nav-btn w-full text-left px-3 py-2 rounded-lg flex items-center gap-2 hover:bg-white/5 transition">
+                                    <span class="text-slate-400 font-bold">#</span>
+                                    <span class="truncate">自己紹介・モヤモヤ吐き出し</span>
+                                </button>
+                                <button id="ch-btn-goodnew" onclick="selectChannel('goodnew')" class="ch-nav-btn w-full text-left px-3 py-2 rounded-lg flex items-center gap-2 hover:bg-white/5 transition">
+                                    <span class="text-slate-400 font-bold">#</span>
+                                    <span class="truncate">今日の成長・グッド＆ニュー</span>
+                                </button>
+                            </div>
+
+                            <div>
+                                <div class="px-2 mb-1 text-[11px] font-bold text-discordMuted">【探求・体験エリア】</div>
+                                <button id="ch-btn-ch0" onclick="selectChannel('ch0')" class="ch-nav-btn w-full text-left px-3 py-2 rounded-lg flex items-center gap-2 hover:bg-white/5 transition">
+                                    <span class="text-amber-400 font-bold">#</span>
+                                    <span class="truncate">ch0｜才能・適性実験室</span>
+                                </button>
+                                <button id="ch-btn-ch1" onclick="selectChannel('ch1')" class="ch-nav-btn w-full text-left px-3 py-2 rounded-lg flex items-center gap-2 hover:bg-white/5 transition">
+                                    <span class="text-emerald-400 font-bold">#</span>
+                                    <span class="truncate">ch1｜宅建・資格の部屋</span>
+                                </button>
+                                <button id="ch-btn-ch2" onclick="selectChannel('ch2')" class="ch-nav-btn w-full text-left px-3 py-2 rounded-lg flex items-center gap-2 hover:bg-white/5 transition">
+                                    <span class="text-purple-400 font-bold">#</span>
+                                    <span class="truncate">ch2｜簿記・ビジネスの部屋</span>
+                                </button>
+                            </div>
+
+                            <div>
+                                <div class="px-2 mb-1 text-[11px] font-bold text-discordMuted">【イベント・音声】</div>
+                                <button id="ch-btn-studyvc" onclick="selectChannel('studyvc')" class="ch-nav-btn w-full text-left px-3 py-2 rounded-lg flex items-center gap-2 hover:bg-white/5 transition">
+                                    <span>🔊</span>
+                                    <span class="truncate">作業部屋（もくもく・マイクOFF）</span>
+                                </button>
+                                <button id="ch-btn-loungevc" onclick="selectChannel('loungevc')" class="ch-nav-btn w-full text-left px-3 py-2 rounded-lg flex items-center gap-2 hover:bg-white/5 transition">
+                                    <span>💬</span>
+                                    <span class="truncate">ラウンジ（雑談・マイクON）</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs text-discordText">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                            <span class="font-semibold">匿名メンバー（ROM歓迎）</span>
+                        </div>
+                        <span class="text-[10px] text-discordMuted">マイクOFF設定可</span>
+                    </div>
+                </div>
+
+                <div class="md:col-span-8 flex flex-col justify-between bg-discordBg">
+                    <div>
+                        <div class="px-5 py-3.5 border-b border-black/30 flex items-center justify-between bg-discordBg/90">
+                            <div class="flex items-center gap-2">
+                                <span id="preview-ch-icon" class="text-lg font-bold text-amber-400">#</span>
+                                <h3 id="preview-ch-title" class="font-bold text-white text-sm sm:text-base">はじめに-必読（規約やコンセプト）</h3>
+                            </div>
+                            <span class="text-[11px] px-2.5 py-1 rounded-full bg-black/30 text-discordMuted">否定・マウント禁止の安全空間</span>
+                        </div>
+
+                        <div id="preview-ch-feed" class="p-5 space-y-4 max-h-[420px] overflow-y-auto"></div>
+                    </div>
+
+                    <div class="p-4 bg-discordBg border-t border-black/20">
+                        <div class="bg-[#383A40] rounded-lg px-4 py-2.5 flex items-center justify-between text-xs sm:text-sm text-discordMuted">
+                            <span><i class="fa-solid fa-circle-plus mr-2"></i>参加後はここに気軽に書き込めます（見るだけでもずっとOK！）</span>
+                            <a href="https://discord.gg/kcMQ2eF5T" target="_blank" rel="noopener noreferrer" class="text-amber-400 hover:underline font-bold shrink-0 ml-2">Discordで参加する →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-[#050814] border-t border-white/10 text-center">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="p-8 rounded-3xl bg-[#0B132B]/80 border border-white/15 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-2xl">
+                <div class="text-left space-y-2">
+                    <div class="inline-block px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 text-xs font-bold">
+                        <i class="fa-solid fa-handshake mr-1"></i> 法人・資格スクール・講師の皆様へ
+                    </div>
+                    <h3 class="text-xl font-bold text-white">LabRidge TVへの番組協賛・出展のご案内</h3>
+                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-xl">
+                        熱量の高い受講意欲を持つメンバーに向けた「実験型セミナー・番組枠」の提供を行っております。専用の窓口をご用意しております。
+                    </p>
+                </div>
+                <button onclick="openPartnerModal()" class="px-6 py-3.5 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/20 text-xs sm:text-sm font-bold text-white transition shrink-0 flex items-center gap-2">
+                    <i class="fa-solid fa-envelope-open-text text-amber-400"></i>
+                    <span>パートナー窓口を開く</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <div id="partner-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="max-w-md w-full bg-[#0A1124] border border-amber-400/40 rounded-3xl p-6 sm:p-8 relative shadow-2xl">
+            <button onclick="closePartnerModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="text-center mb-6">
+                <span class="text-xs font-bold text-amber-400 uppercase tracking-widest">PARTNER INQUIRY</span>
+                <h3 class="font-serif text-xl font-bold text-white mt-1">法人・講師パートナーお問い合わせ</h3>
+                <p class="text-xs text-slate-300 mt-2">以下の窓口、または公式Discord内のお問い合わせよりお気軽にご連絡ください。</p>
+            </div>
+            <div class="space-y-4 text-xs">
+                <div class="p-4 rounded-xl bg-slate-900 border border-white/10 space-y-1">
+                    <div class="text-amber-300 font-bold">📧 運営事務局メール窓口</div>
+                    <div class="text-white font-mono">labridge.first@gmail.com</div>
+                </div>
+                <div class="p-4 rounded-xl bg-slate-900 border border-white/10 space-y-1">
+                    <div class="text-indigo-300 font-bold">💬 Discord公式サーバー内窓口</div>
+                    <div class="text-white">サーバー内『管理人・お問い合わせ』ルームより直接DMをお送りください。</div>
+                </div>
+            </div>
+            <button onclick="closePartnerModal()" class="w-full mt-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-amber-500 text-slate-950 font-bold text-xs">
+                閉じる
+            </button>
+        </div>
+    </div>
+
+    <footer class="py-10 bg-[#040711] border-t border-white/5 text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <span class="font-serif font-bold text-slate-300 text-sm">LabRidge（ラボリッジ）</span>
+                <span>© 2026 LabRidge Community. All rights reserved.</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="https://discord.gg/kcMQ2eF5T" target="_blank" rel="noopener noreferrer" class="text-indigo-400 hover:text-amber-300 font-bold transition">
+                    公式Discord: https://discord.gg/kcMQ2eF5T
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="copy-toast" class="fixed bottom-5 right-5 z-50 hidden px-5 py-3 rounded-2xl bg-emerald-500 text-slate-950 font-bold text-xs sm:text-sm shadow-2xl flex items-center gap-2">
+        <i class="fa-solid fa-circle-check text-base"></i>
+        <span id="copy-toast-msg">招待URLをコピーしました！</span>
+    </div>
+
+    <script>
+        const OFFICIAL_DISCORD_URL = 'https://discord.gg/kcMQ2eF5T';
+
+        function copyTextToClipboard(text, message) {
+            const tempInput = document.createElement('textarea');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            const toast = document.getElementById('copy-toast');
+            const toastMsg = document.getElementById('copy-toast-msg');
+            toastMsg.textContent = message || 'コピーしました！';
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+
+        function copyInviteUrl() {
+            copyTextToClipboard(OFFICIAL_DISCORD_URL, '公式招待URL（https://discord.gg/kcMQ2eF5T）をコピーしました！');
+        }
+
+        function openPartnerModal() {
+            document.getElementById('partner-modal').classList.remove('hidden');
+        }
+        function closePartnerModal() {
+            document.getElementById('partner-modal').classList.add('hidden');
+        }
+
+        const quizQuestions = [
+            {
+                q: "Q1. 今の環境（会社や学校）で、一番「しんどいな」と感じる瞬間はどれですか？",
+                options: [
+                    { text: "人間関係の気遣いや、意味のない会議・同調圧力に疲れる", type: "ch1" },
+                    { text: "評価基準が曖昧で、何を頑張ればいいか分からない", type: "ch2" },
+                    { text: "毎日同じルーティンばかりで、自分の手で何かを作るワクワク感がない", type: "ch3" }
+                ]
+            },
+            {
+                q: "Q2. 普段の生活で、比較的「苦にならなかった作業」はどれに近いですか？",
+                options: [
+                    { text: "ルールや攻略法を覚えて、パズルのように条件を当てはめること", type: "ch1" },
+                    { text: "データや数字の推移を見て「こうすれば無駄が減る」と整理すること", type: "ch2" },
+                    { text: "知らない言葉やツールを触ってみたり、表現やデザインを工夫すること", type: "ch3" }
+                ]
+            },
+            {
+                q: "Q3. もし新しい武器（資格やスキル）を試すなら、理想のゴールはどれ？",
+                options: [
+                    { text: "国家資格という「一生モノの肩書」を持って、転職や独立の切り札にしたい", type: "ch1" },
+                    { text: "どの業界でも通用する「会計・ビジネス戦闘力」をつけて安心感を得たい", type: "ch2" },
+                    { text: "場所や会社に縛られず、PC1台や語学力で世界を広げたい", type: "ch3" }
+                ]
+            },
+            {
+                q: "Q4. 無理なく捻出できそうな「実験タイム（スキマ時間）」はどのくらい？",
+                options: [
+                    { text: "1日15分〜30分くらい（通勤中や寝る前に少しずつ）", pace: "light" },
+                    { text: "1日1時間くらい（作業部屋に入りながらコツコツ）", pace: "medium" },
+                    { text: "週末にまとめて＋平日も1時間以上しっかり確保したい", pace: "deep" }
+                ]
+            }
+        ];
+
+        let currentStep = 0;
+        let answers = [];
+
+        function renderQuizStep() {
+            const qObj = quizQuestions[currentStep];
+            const percent = Math.round(((currentStep + 1) / quizQuestions.length) * 100);
+            document.getElementById('quiz-step-label').textContent = `QUESTION ${currentStep + 1} / ${quizQuestions.length}`;
+            document.getElementById('quiz-percent-label').textContent = `${percent}%`;
+            document.getElementById('quiz-progress-bar').style.width = `${percent}%`;
+
+            let html = `
+                <h3 class="text-lg sm:text-xl font-bold text-white mb-6">${qObj.q}</h3>
+                <div class="space-y-3">
+            `;
+            qObj.options.forEach((opt, idx) => {
+                html += `
+                    <button onclick="selectQuizOption(${idx})" class="w-full text-left p-4 sm:p-5 rounded-2xl bg-slate-900/90 hover:bg-purple-950/60 border border-white/10 hover:border-amber-400/60 transition flex items-center justify-between group">
+                        <span class="text-sm sm:text-base text-slate-200 group-hover:text-white font-medium pr-4">${opt.text}</span>
+                        <span class="w-8 h-8 rounded-full bg-white/5 group-hover:bg-amber-400 group-hover:text-slate-950 flex items-center justify-center shrink-0 transition">
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </span>
+                    </button>
+                `;
+            });
+            html += `</div>`;
+            document.getElementById('quiz-content').innerHTML = html;
+        }
+
+        function selectQuizOption(idx) {
+            answers.push(quizQuestions[currentStep].options[idx]);
+            currentStep++;
+            if (currentStep < quizQuestions.length) {
+                renderQuizStep();
+            } else {
+                showQuizResult();
+            }
+        }
+
+        function showQuizResult() {
+            document.getElementById('quiz-progress-wrap').classList.add('hidden');
+            document.getElementById('quiz-content').classList.add('hidden');
+            const resBox = document.getElementById('quiz-result');
+            resBox.classList.remove('hidden');
+
+            const counts = { ch1: 0, ch2: 0, ch3: 0 };
+            answers.slice(0, 3).forEach(a => { if (a.type) counts[a.type]++; });
+            let topType = 'ch1';
+            if (counts.ch2 > counts[topType]) topType = 'ch2';
+            if (counts.ch3 > counts[topType]) topType = 'ch3';
+
+            const resultData = {
+                ch1: {
+                    badge: "ルール攻略・国家資格スイマー型",
+                    title: "あなたは『明確なルールと専門性がある海』で一気に輝くタイプです！",
+                    desc: "今の環境が苦しいのは、評価基準が曖昧な「空気を読む競争（木登り）」を強いられているから。法律や制度など、ルールが明確な国家資格をひとつ武器にすると、周囲の雑音に振り回されず自分のペースで泳げるようになります。",
+                    channel: "#ch1 宅建・資格の部屋（＆ #ch0 適性実験室）",
+                    reason: "宅建やFPなど、パズルのように知識が繋がる快感をまずは神解説動画やメンバーの勉強ログで覗いてみましょう！"
+                },
+                ch2: {
+                    badge: "構造整理・ビジネスロジック型",
+                    title: "あなたは『数字と仕組みで価値が見える海』で真価を発揮するタイプです！",
+                    desc: "精神論や根性論が飛び交う環境だとエネルギーを奪われてしまいます。逆に、簿記や会計のように「数字という共通言語」で物事を整理できるスキルを身につけると、どの業界でも重宝される圧倒的な安心感が手に入ります。",
+                    channel: "#ch2 簿記・ビジネスの部屋（＆ #ch0 適性実験室）",
+                    reason: "まずは簿記3級〜2級レベルの「お金の流れがわかる面白さ」を、コミュニティ内の無料資料でつまみ食いしてみるのがおすすめです！"
+                },
+                ch3: {
+                    badge: "クリエイティブ・越境エクスプローラー型",
+                    title: "あなたは『自分の手で世界を広げるスキル型の海』が向いています！",
+                    desc: "固定化された古い組織の枠組みに押し込められるのが一番のストレス要因。語学やIT・デザインなど、やった分だけ自分の表現や行動範囲が広がっていく領域に触れると、驚くほど集中力を発揮できます。",
+                    channel: "#ch3 外国語・スキルの部屋（＆ #ch0 適性実験室）",
+                    reason: "いきなり高額スクールに申し込む前に、まずは無料アプリや動画での1週間お試し実験からスタートしてみましょう！"
+                }
+            };
+
+            const picked = resultData[topType];
+            document.getElementById('result-type-badge').textContent = picked.badge;
+            document.getElementById('result-title').textContent = picked.title;
+            document.getElementById('result-desc').textContent = picked.desc;
+            document.getElementById('result-channel').textContent = picked.channel;
+            document.getElementById('result-sim-plan').textContent = "1日60分 × 2ヶ月「もくもく作業プラン」";
+            document.getElementById('result-sim-detail').textContent = "Discord内のツールを使って、自分のペースで無理なく進められます。";
+        }
+
+        function copyDiagnosisSummary() {
+            const badge = document.getElementById('result-type-badge').textContent;
+            const ch = document.getElementById('result-channel').textContent;
+            const summaryText = `【LabRidge 適性診断結果】\n・私の適性タイプ：${badge}\n・覗いてみたい実験部屋：${ch}\nよろしくお願いします！`;
+            copyTextToClipboard(summaryText, '診断結果をコピーしました！Discordの #自己紹介 部屋に貼れます✨');
+        }
+
+        function resetQuiz() {
+            currentStep = 0;
+            answers = [];
+            document.getElementById('quiz-progress-wrap').classList.remove('hidden');
+            document.getElementById('quiz-content').classList.remove('hidden');
+            document.getElementById('quiz-result').classList.add('hidden');
+            renderQuizStep();
+        }
+
+        function runSelfAnalysis() {
+            const cause = document.getElementById('stress-cause').value;
+            const task = document.getElementById('preferred-task').value;
+            const resDiv = document.getElementById('self-analysis-result');
+            resDiv.classList.remove('hidden');
+
+            let suggestion = "";
+            if (cause === 'crowd' && task === 'silent') {
+                suggestion = "✨ 判定：【専門職・リモート適性タイプ】騒がしい環境を離れ、静かに深く思考する資格やITスキルが最大の武器になります！";
+            } else if (cause === 'rule' && task === 'logic') {
+                suggestion = "✨ 判定：【数字・ロジック構築タイプ】曖昧な評価に縛られず、数字や会計（簿記）などクリアな基準で勝負できる海が向いています！";
+            } else {
+                suggestion = "✨ 判定：【越境エクスプローラータイプ】組織の枠組みに縛られず、自分の手でスキルや表現を広げるジャンル（語学・Web）で輝けます！";
+            }
+            resDiv.innerHTML = `<div><strong>分析結果：</strong>${suggestion}</div><div class="text-[10px] text-emerald-300 mt-1">※Discordに参加するとさらに詳細なワークシートが使えます！</div>`;
+        }
+
+        function updateStudySim() {
+            const hours = parseFloat(document.getElementById('study-hours-slider').value);
+            document.getElementById('hours-val').textContent = `${hours} 時間 / 日`;
+
+            const bokiMonths = Math.max(0.5, (90 / (hours * 30)).toFixed(1));
+            const takkenMonths = Math.max(1.0, (300 / (hours * 30)).toFixed(1));
+            const itMonths = Math.max(0.8, (150 / (hours * 30)).toFixed(1));
+
+            document.getElementById('sim-boki').textContent = `${bokiMonths}ヶ月`;
+            document.getElementById('sim-takken').textContent = `${takkenMonths}ヶ月`;
+            document.getElementById('sim-it').textContent = `${itMonths}ヶ月`;
+        }
+
+        const channelMockData = {
+            rules: {
+                icon: "#",
+                title: "はじめに-必読（規約やコンセプト）",
+                posts: [
+                    {
+                        author: "LabRidge 案内人 (運営)",
+                        role: "Founder / 管理人",
+                        roleColor: "text-amber-400 bg-amber-400/10",
+                        time: "ピン留めメッセージ",
+                        content: `<strong>🌊 LabRidge（ラボリッジ）へようこそ！</strong><br>ここは、今の環境にどうしても馴染めない人が、「自分に合う海（適性・武器）」を見つけて実験していくための匿名のサードプレイスです。<br><br><strong>🕊️ 心地よい場所にするためのお約束</strong><br>1. <strong>「否定」や「マウント」は禁止です</strong>（説教やマウント発言は一切NG）<br>2. <strong>「今の環境が合わない」という悩みを否定しない</strong><br>3. <strong>アドバイスは求められたときだけ / ROM大歓迎！</strong>`,
+                        reactions: [{ emoji: "🌊", count: 48 }, { emoji: "✨", count: 35 }]
+                    }
+                ]
+            },
+            news: {
+                icon: "#",
+                title: "お知らせ（運営からのアナウンス）",
+                posts: [
+                    {
+                        author: "LabRidge 案内人 (運営)",
+                        role: "アナウンス",
+                        roleColor: "text-purple-400 bg-purple-400/10",
+                        time: "今週",
+                        content: `📢 <strong>【LabRidge TV 週末特番スタート！】</strong><br>今週末からch1（宅建）とch2（簿記）の体験配信が始まります。事前予約不要で自由に参加できます！`,
+                        reactions: [{ emoji: "🎁", count: 31 }, { emoji: "👏", count: 19 }]
+                    }
+                ]
+            },
+            intro: {
+                icon: "#",
+                title: "自己紹介・モヤモヤ吐き出し",
+                posts: [
+                    {
+                        author: "ミナト＠営業3年目",
+                        role: "Founderメンバー",
+                        roleColor: "text-sky-400 bg-sky-400/10",
+                        time: "昨日 21:14",
+                        content: `<strong>・お名前：</strong>ミナト<br><strong>・モヤモヤ：</strong>ノルマ競争が性格に合わず毎日胃が痛くなってました。<br><strong>・やりたいこと：</strong>宅建と簿記の部屋を覗いてみたいです！`,
+                        reactions: [{ emoji: "🫂", count: 18 }, { emoji: "🌸", count: 15 }]
+                    }
+                ]
+            },
+            goodnew: {
+                icon: "#",
+                title: "今日の成長・グッド＆ニュー",
+                posts: [
+                    {
+                        author: "コウジ",
+                        role: "実験中スイマー",
+                        roleColor: "text-amber-300 bg-amber-400/10",
+                        time: "今日 19:20",
+                        content: `🌱 仕事帰りにカフェで宅建のテキストを6ページ読めました！ここでは小さな前進も褒めてもらえるから続いてます。`,
+                        reactions: [{ emoji: "👏", count: 22 }, { emoji: "🔥", count: 16 }]
+                    }
+                ]
+            },
+            ch0: { icon: "#", title: "ch0｜才能・適性実験室", posts: [{ author: "LabRidge 案内人", role: "実験ガイド", roleColor: "text-purple-300 bg-purple-500/20", time: "ピン留め", content: `🧪 何が向いているか分からない人のための総合実験室です！「合わなかった体験談」も大歓迎！`, reactions: [{ emoji: "🧪", count: 27 }] }] },
+            ch1: { icon: "#", title: "ch1｜宅建・資格の部屋", posts: [{ author: "タクミ", role: "ch1メンバー", roleColor: "text-emerald-300 bg-emerald-500/20", time: "今日", content: `📚 過去問アプリを10問解いてみた！パズルのように条件を当てはめる感覚で面白い。`, reactions: [{ emoji: "🏠", count: 14 }] }] },
+            ch2: { icon: "#", title: "ch2｜簿記・ビジネスの部屋", posts: [{ author: "サトシ", role: "ch2メンバー", roleColor: "text-amber-300 bg-amber-500/20", time: "昨日", content: `📊 簿記3級の借方・貸方のパズルがピタッと合う瞬間が気持ちいい！`, reactions: [{ emoji: "📊", count: 17 }] }] },
+            studyvc: { icon: "🔊", title: "作業部屋（もくもく・マイクOFF）", posts: [{ author: "音声チャンネル", role: "LIVE", roleColor: "text-emerald-300 bg-emerald-500/20", time: "アクティブ", content: `🔇 基本マイクOFFで入退室自由！みんなで自習室感覚にもくもく作業中。`, reactions: [{ emoji: "🔥", count: 33 }] }] },
+            loungevc: { icon: "💬", title: "ラウンジ（雑談・マイクON）", posts: [{ author: "音声チャンネル", role: "雑談", roleColor: "text-amber-300 bg-amber-500/20", time: "自由", content: `☕ 勉強の合間の息抜きや深夜のゆるい雑談部屋です。`, reactions: [{ emoji: "☕", count: 20 }] }] }
+        };
+
+        function selectChannel(chKey) {
+            document.querySelectorAll('.ch-nav-btn').forEach(btn => {
+                btn.classList.remove('bg-white/10', 'text-white', 'font-medium');
+                btn.classList.add('text-discordMuted');
+            });
+            const activeBtn = document.getElementById(`ch-btn-${chKey}`);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-white/10', 'text-white', 'font-medium');
+                activeBtn.classList.remove('text-discordMuted');
+            }
+
+            const data = channelMockData[chKey];
+            document.getElementById('preview-ch-icon').textContent = data.icon;
+            document.getElementById('preview-ch-title').textContent = data.title;
+
+            let feedHtml = '';
+            data.posts.forEach(p => {
+                let reactHtml = p.reactions.map(r => `
+                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-[#2B2D31] border border-white/10 text-xs text-slate-200">
+                        <span>${r.emoji}</span>
+                        <span class="text-indigo-300 font-semibold">${r.count}</span>
+                    </span>
+                `).join('');
+
+                feedHtml += `
+                    <div class="flex items-start gap-3.5 bg-[#2B2D31]/60 p-4 rounded-xl border border-white/5">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-purple-600 to-amber-500 flex items-center justify-center font-bold text-white shrink-0 text-sm">
+                            ${p.author.charAt(0)}
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex flex-wrap items-center gap-2 mb-1">
+                                <span class="font-bold text-white text-sm">${p.author}</span>
+                                <span class="text-[10px] px-2 py-0.5 rounded font-bold ${p.roleColor}">${p.role}</span>
+                                <span class="text-[11px] text-discordMuted">${p.time}</span>
+                            </div>
+                            <div class="text-xs sm:text-sm text-discordText leading-relaxed">${p.content}</div>
+                            <div class="flex flex-wrap gap-1.5 mt-3">${reactHtml}</div>
+                        </div>
+                    </div>
+                `;
+            });
+            document.getElementById('preview-ch-feed').innerHTML = feedHtml;
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderQuizStep();
+            selectChannel('rules');
+            updateStudySim();
+        });
+    </script>
+</body>
+</html>
+```[cite: 2]
