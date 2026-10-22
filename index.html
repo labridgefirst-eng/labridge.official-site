@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LabRidge（ラボリッジ）｜魚に、木登りを教えるな。匿名の適性実験サードプレイス</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Shippori+Mincho:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        midnight: '#060A17',
+                        deepsea: '#0B132B',
+                        ocean: '#1C2541',
+                        brandPurple: '#6D28D9',
+                        brandViolet: '#8B5CF6',
+                        brandGold: '#F59E0B',
+                        brandAmber: '#FBBF24',
+                        discordBg: '#313338',
+                        discordSidebar: '#2B2D31',
+                        discordDark: '#1E1F22',
+                        discordText: '#DBDEE1',
+                        discordMuted: '#949BA4'
+                    },
+                    fontFamily: {
+                        serif: ['"Shippori Mincho"', 'serif'],
+                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #060A17;
+            color: #F1F5F9;
+            font-family: 'Noto Sans JP', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .bg-brand-gradient {
+            background: linear-gradient(90deg, #5B34EA 0%, #8B5CF6 35%, #D97706 75%, #FBBF24 100%);
+        }
+        
+        .bg-cta-gradient {
+            background: linear-gradient(90deg, #FBBF24 0%, #D97706 30%, #7C3AED 75%, #4F46E5 100%);
+            background-size: 200% auto;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .bg-cta-gradient:hover {
+            background-position: right center;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px -5px rgba(139, 92, 246, 0.5), 0 0 20px rgba(251, 191, 36, 0.4);
+        }
+
+        .text-logo-gradient {
+            background: linear-gradient(90deg, #6366F1 0%, #A855F7 35%, #F59E0B 75%, #FBBF24 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .border-brand-gradient {
+            border: 1px solid transparent;
+            background: linear-gradient(#0B132B, #0B132B) padding-box,
+                        linear-gradient(90deg, rgba(139, 92, 246, 0.6), rgba(251, 191, 36, 0.6)) border-box;
+        }
+
+        .hero-ocean-bg {
+            background: radial-gradient(circle at 80% 35%, rgba(251, 191, 36, 0.14) 0%, transparent 35%),
+                        radial-gradient(circle at 30% 60%, rgba(109, 40, 217, 0.22) 0%, transparent 45%),
+                        linear-gradient(180deg, #050814
